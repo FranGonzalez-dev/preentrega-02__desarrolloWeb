@@ -6,7 +6,6 @@
     
     --color-primary: #5a189a;
     --color-secondary: #3c096c;
-    --third-color: #240046;
 
     --color-white-1: #fff;
     --color-white-2: #eee;
@@ -23,16 +22,15 @@
     padding: 0;
     box-sizing: border-box;
 }
-html {
-    font-size: 62.5%;
+html { 
+    font-size: 62.5%; 
 }
 body {
     font-size: 1.6rem;
-    overflow: overlay;
     font-family: var(--font-1);
 }
-main {
-    background-color: var(--color-white-1);
+main { 
+    background-color: var(--color-white-1); 
 }
 a {
     color: inherit;
@@ -40,6 +38,9 @@ a {
 }
 a:hover {
     color: unset;
+}
+ul {
+    list-style-type: none;
 }
 
 /****   Utilities   ****/
@@ -57,8 +58,13 @@ a:hover {
     width: 100%;
     padding: 0 1rem;
 }
-
-/* Buttons */
+/* Logo */
+.logo {
+    cursor: pointer;
+    font: normal 500 2.2rem var(--font-1);
+    color: var(--color-white-1);
+}
+/* Button */
 .button {
     border-radius: .5rem;
     width: 100%;
@@ -79,17 +85,17 @@ a:hover {
 }
 
 /*** Navbar ***/
+#check { display: none; }
 #navbar {
     position: fixed;
     width: 100%;
     z-index: 10;
     transition: all .2s ease-in-out;
-    padding: 0 2rem;
+    padding: 0 1rem;
     margin: 0 auto;
 }
-#check {
-    display: none;
-}
+/* Add background-color on scroll */
+.active-nav { background-color: var(--color-primary); } 
 .navigator {
     height: 70px;
     color: var(--color-white-1);
@@ -98,19 +104,14 @@ a:hover {
     align-items: center;
     justify-content: space-between;
 }
-.navigator__logo {
-    cursor: pointer;
-    font: normal 500 2.2rem var(--font-1);
-}
 .navigator__wrapper {
     display: flex;
+    padding-top: 10px;
     gap: 1rem;
     align-items: center;
     flex-direction: row;
-    list-style-type: none;
 }
 .navigator__item {
-    cursor: pointer;
     transition: color ease-in-out .3s;
     position: relative;
     padding: 1rem;
@@ -133,33 +134,18 @@ a:hover {
 }
 /* Call to Action style */
 .navigator__item--cta {
-    background-color: var(--color-primary);
-    color: var(--color-white-1);
+    background-color: var(--color-white-1);
+    color: var(--color-black-1);
     transition: all ease-in-out .3s;
     border-radius: .5rem;
-}
-.navigator__item--cta::after {
-    content: '';
-    position: absolute;
-    display: none;
 }
 .navigator__item--cta:hover {
     background-color: var(--color-secondary);
     color: var(--color-white-1);
 }
-/* Active on scroll */
-.active-nav {
-    background-color: var(--color-white-2);
-}
-.active-nav .navigator {
-    color: #050505;
-}
-.active-nav .checkbtn {
-    color: #050505;
-}
-.active-nav .navigator__item::after {
-    background-color: var(--color-primary);
-}
+.navigator__item--cta::after { display: none; }
+
+
 
 /* Responsive */
 .checkbtn {
@@ -181,28 +167,28 @@ a:hover {
         width: 100%;
         height: 100vh;
         padding-top: 50px;
-        background-color: #eee;
+        background-color: var(--color-primary);
         top: 70px;
         left: -100%;
         text-align: center;
         transition: all .5s ease-in-out;
         flex-direction: column;
     }
-    .navigator ul li{
-      display: block;
-      margin: 20px 0;
-      line-height: 30px;
-    }
     .navigator__item{
+      display: block;
+      margin: 1rem 0;
       font-size: 20px;
-      color: #050505;
-    }
-    .navigator__item--cta {
-        color: var(--color-white-1);
+      color: var(--color-white-1);
     }
     .navigator__item::after {
-        background-color: var(--color-primary);
+        content: '';
+        position: absolute;
+        display: none;
     }
+    .navigator__item--cta {
+        color: var(--color-black-1);
+    }
+    
     #check:checked ~ ul{
       left: 0;
     }
@@ -231,21 +217,7 @@ a:hover {
     gap: 1.5rem;
     margin: 3rem 0 1rem 0;
 }
-@media screen and (min-width: 768px) {
-    .section__title { font-size: 5rem; }
-    .section__grid { grid-template-columns: repeat(3, 1fr); }
-    .item:hover {
-        transform: scale(105%);
-        background-color: var(--color-white-2);
-    }
-    .item:hover .item__top--circle {
-        background-color: var(--color-primary);
-        color: var(--color-white-1);
-    }
-}
-
 .item {
-    background-color: var(--color-white-2);
     border-radius: .5rem;
     text-align: center;
     padding: 1rem;
@@ -253,8 +225,6 @@ a:hover {
     width: 100%;
     transition: all .2s ease-in-out;
 }
-
-
 .item__top {
     width: 100%;
     position: relative;
@@ -288,28 +258,35 @@ a:hover {
 .item p span {
     font-style: italic;
 }
-
+@media screen and (min-width: 768px) {
+    .section__title { font-size: 5rem; }
+    .section__grid { grid-template-columns: repeat(3, 1fr); }
+    .item:hover {
+        transform: scale(105%);
+        background-color: var(--color-white-2);
+    }
+    .item:hover .item__top--circle {
+        background-color: var(--color-primary);
+        color: var(--color-white-1);
+    }
+}
 /*** Parallax ***/
 #parallax__section--01 {
     width: 100%;
     height: 250px;
-    background: var(--color-white-1) url(../img/bb-king.png) no-repeat top fixed;
+    background: var(--color-white-1) url(../img/bbking.webp) no-repeat top fixed;
     background-size: cover;
-}
-@media screen and (min-width: 768px) {
-    #parallax__section--01 {
-        height: 450px;
-    }    
-}
-@media screen and (min-width: 900px) {
-    #parallax__section--01 {
-        height: 80vh;
-    }    
 }
 #parallax__section--02 {
     padding: 1.5rem;
-    background: var(--color-black-1) url(../img/guitar.jpg) no-repeat top fixed;
+    background: var(--color-black-1) url(../img/guitar.webp) no-repeat top fixed;
     background-size: cover;
+}
+@media screen and (min-width: 768px) {
+    #parallax__section--01 { height: 450px; }    
+}
+@media screen and (min-width: 900px) {
+    #parallax__section--01 { height: 80vh; }
 }
 
 /* Section Banner for heading titles */
@@ -387,14 +364,7 @@ a:hover {
     color: #ccc;
 }
 
-
-
-
 /*****      Inicio      *****/
-
-
-
-
 /* Hero */
 .hero {
     width: 100%;
@@ -404,9 +374,7 @@ a:hover {
 .hero__background {
     height: 100%;
     width: 100%;
-    position: fixed;
     object-fit: cover;
-    z-index: -99;
     background-color: var(--color-black-1);
 }
 .hero__text {
@@ -487,7 +455,6 @@ a:hover {
     min-height: 350px;
     background-color: rgba(255, 255, 255, .8);
     backdrop-filter: blur(10px);
-    padding: 1rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -500,9 +467,8 @@ a:hover {
     font-size: 1.4rem;
 }
 .slide__title {
-    font-size: 2.8rem;
+    font: normal 600 3rem var(--font-2);
     color: var(--color-black-1);
-    font-family: var(--font-2);
 }
 .slide__info {
     color: var(--color-black-2);
@@ -519,21 +485,16 @@ a:hover {
 
 /*****      Contact Form      *****/
 .form {
-    padding: 2rem .5rem;
+    margin-bottom: 2rem;
+    width: 100%;
     display: grid;
     gap: 1.5rem;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas:
-    'name name'
-    'surname surname'
-    'email email'
-    'tel tel'
-    'message message'
-    'button__form button__form'
-    ;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'name' 'surname' 'email' 'tel' 'message' 'button__form';
 }
 @media screen and (min-width: 768px) {
     .form {
+        grid-template-columns: 1fr 1fr;
         grid-template-areas:
             'name surname'
             'email tel '
@@ -562,7 +523,7 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #2f2c45;
+    border: 2px solid var(--color-black-2);
     background: var(--color-white-1);
     font-size: 18px;
     outline: none;
