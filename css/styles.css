@@ -339,9 +339,10 @@ ul {
 }
 .footer__social {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 40%;
+    gap: 2rem;
+    width: 100%;
     font-size: 2rem;
     list-style-type: none;
 }

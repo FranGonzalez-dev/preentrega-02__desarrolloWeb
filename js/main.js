@@ -5,13 +5,6 @@ window.addEventListener("scroll", () =>
         ? nav.classList.add("active-nav")
         : nav.classList.remove("active-nav")
 );
-
-// Pausar video en scrollY
-const video = document.getElementById("video");
-window.addEventListener("scroll", () =>
-    window.scrollY >= 250 ? video.pause() : video.play()
-);
-
 // Form inputs
 document.querySelectorAll( ".input__text" )
 .forEach( element => {
